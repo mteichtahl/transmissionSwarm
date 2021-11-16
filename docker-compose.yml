@@ -14,6 +14,8 @@ services:
       - TRANSMISSION_WEB_HOME=/combustion-release/ 
       - SMB_USERNAME=/run/secrets/viktorUserName
       - SMB_PASSWORD=/run/secrets/viktorPassword
+      - SMB_IPADDRESS=10.0.1.10
+      - CIF_VERSION=2.0
     volumes:
       - config:/config
       - download:/downloads
@@ -30,8 +32,8 @@ volumes:
     driver: local
     driver_opts:
       type: cifs
-      o: "username=${SMB_USERNAME},password=${SMB_PASSWORD},vers=2.0"
-      device: "//10.0.1.10/download"
+      o: "username=${SMB_USERNAME},password=${SMB_PASSWORD},vers=${CIF_VERSION}"
+      device: "//${SMB_IPADDRESS}/download"
   config:
     driver: local
 secrets:
