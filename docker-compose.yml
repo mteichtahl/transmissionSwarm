@@ -6,6 +6,10 @@ services:
       placement:
         constraints:
           - "node.role!=manager"
+        resources:
+          limits:
+            cpus: '2.00'
+            memory: 150M
     image: lscr.io/linuxserver/transmission
     environment:
       - PUID=0
