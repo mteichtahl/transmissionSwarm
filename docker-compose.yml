@@ -2,6 +2,10 @@
 version: "3.1"
 services:
   transmission:
+    deploy:
+      placement:
+        constraints:
+          - "node.role!=manager"
     image: lscr.io/linuxserver/transmission
     environment:
       - PUID=0
