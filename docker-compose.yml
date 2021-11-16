@@ -18,8 +18,8 @@ services:
       - 51413:51413
       - 51413:51413/udp
     secrets:
-	  - viktorUserName
-	  - viktorPassword
+      - viktorUserName
+      - viktorPassword
     restart: unless-stopped	
 volumes:
   download:
