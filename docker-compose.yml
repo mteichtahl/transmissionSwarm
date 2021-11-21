@@ -3,6 +3,8 @@ version: "3.1"
 services:
   transmission:
     deploy:
+      mode: replicated
+      replicas: 2
       placement:
         constraints:
           - "node.role!=manager"
@@ -15,7 +17,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Australia/Melbourne
-      - TRANSMISSION_WEB_HOME=/combustion-release/ 
+      - TRANSMISSION_WEB_HOME=/combustion-release/
       - SMB_USERNAME=/run/secrets/viktorUserName
       - SMB_PASSWORD=/run/secrets/viktorPassword
       - SMB_IPADDRESS=10.0.1.10
@@ -30,7 +32,7 @@ services:
     secrets:
       - viktorUserName
       - viktorPassword
-    restart: unless-stopped	
+    restart: unless-stopped
 volumes:
   download:
     driver: local

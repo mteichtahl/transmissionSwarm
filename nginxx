@@ -1,0 +1,24 @@
+---
+version: "3.3"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - app:/var/www/html'
+      - config:/etc/nginx/conf.d
+    configs:
+      - source: nginx_copy_copy_copy
+        target: /etc/nginx/nginx.conf
+        uid: "0"
+        gid: "0"
+configs:
+  nginx_copy_copy_copy:
+    external: true
+volumes:
+  app:
+    driver: local
+  config:
+    driver: local
