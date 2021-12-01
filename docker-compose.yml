@@ -47,3 +47,6 @@ secrets:
     external: true
   viktorPassword:
     external: true
+labels:
+  - traefik.http.routers.transmission.rule=Host(`host.docker.internal`)
+  - traefik.http.services.transmission-service.loadbalancer.server.port=9091
