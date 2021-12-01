@@ -33,6 +33,9 @@ services:
       - viktorUserName
       - viktorPassword
     restart: unless-stopped
+    labels:
+      - traefik.http.routers.transmission.rule=Host(`host.docker.internal`)
+      - traefik.http.services.transmission-service.loadbalancer.server.port=9091
 volumes:
   download:
     driver: local
@@ -47,6 +50,3 @@ secrets:
     external: true
   viktorPassword:
     external: true
-labels:
-  - traefik.http.routers.transmission.rule=Host(`host.docker.internal`)
-  - traefik.http.services.transmission-service.loadbalancer.server.port=9091
